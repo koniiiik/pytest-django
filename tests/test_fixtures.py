@@ -638,6 +638,10 @@ def test_mail_again(mailoutbox):
     test_mail(mailoutbox)
 
 
+def test_mail_with_db(mailoutbox, db):
+    assert mailoutbox is mail.outbox
+
+
 def test_mail_message_uses_mocked_DNS_NAME(mailoutbox):
     mail.send_mail("subject", "body", "from@example.com", ["to@example.com"])
     m = mailoutbox[0]
